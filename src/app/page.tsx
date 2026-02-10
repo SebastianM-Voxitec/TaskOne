@@ -28,7 +28,7 @@ export default function Home() {
 
         <div style={{ marginTop: CONTENT_GAP_REM, marginBottom: CONTENT_GAP_REM }} />
 
-        {/* Bottom: fixed 3-col — EdTech | Autonomy | RECENT PARTNERSHIPS; no reflow on resize */}
+        {/* Bottom: fixed 3-col — EdTech | Autonomy | RECENT PARTNERSHIPS; row height is locked so cards align pixel-perfect */}
         <div
           className="grid grid-cols-3 items-stretch"
           style={{ gap: CONTENT_GAP_REM }}
@@ -39,8 +39,8 @@ export default function Home() {
               <AutonomyBlock />
             </div>
           </div>
-          {/* align-self-start so section height is content-based; content never clipped by grid row */}
-          <section className="flex w-full min-w-0 flex-col self-start overflow-visible">
+          {/* Right column stretches to full row height so RECENT PARTNERSHIPS bottom lines align with left blocks */}
+          <section className="flex w-full min-w-0 flex-col overflow-visible">
             <RecentPartnerships />
           </section>
         </div>

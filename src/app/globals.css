@@ -18,8 +18,8 @@
 /* Stable scrollbar area so right margin doesn’t jump when scrollbar appears */
 html {
   scrollbar-gutter: stable;
-  /* Scale layout with viewport so resizing shrinks layout instead of reflowing (min 10px keeps text readable) */
-  font-size: min(16px, max(10px, calc(100vw / 90)));
+  /* Scale layout strictly with viewport width so every element (including text) shrinks and grows together; no cap at large widths */
+  font-size: max(10px, calc(100vw / 90)); /* // 90 "units" across the design; 10px floor keeps text readable on very small widths */
 }
 
 body {

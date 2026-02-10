@@ -10,6 +10,7 @@ export function LatestResearch() {
   const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
+    // Clamp animation to the image container only so text position remains stable
     let ctx: { revert: () => void } | undefined;
     void import("gsap").then(({ default: gsap }) => {
       ctx = gsap.context(() => {
@@ -42,7 +43,8 @@ export function LatestResearch() {
 
       {/* Wrapper keeps text block in flow below image with explicit margin; shrink-0 so it is never compressed under image */}
       <div className="relative z-10 mt-6 shrink-0 min-w-0 overflow-visible">
-        <p className="text-sm leading-relaxed text-white">
+        {/* Clamp body copy so top row height does not change between localhost and Vercel on resize */}
+        <p className="text-sm leading-relaxed text-white clamped-body">
           {PLACEHOLDER_BODY}…
         </p>
         {/* Divider line after description, aligned with image edges */}

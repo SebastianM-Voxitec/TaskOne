@@ -15,6 +15,7 @@ export function RecentNews() {
   const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
+    // Animate right-column news cards only; layout metrics remain driven by CSS
     let ctx: { revert: () => void } | undefined;
     void import("gsap").then(({ default: gsap }) => {
       ctx = gsap.context(() => {
@@ -52,7 +53,8 @@ export function RecentNews() {
             )}
             {imgError && <div className="absolute inset-0" aria-hidden />}
           </div>
-          <p className="text-sm leading-relaxed text-white">
+          {/* Clamp left column paragraph so top grid row height is fixed across viewport widths */}
+          <p className="text-sm leading-relaxed text-white clamped-body">
             {ONTARIO_EDUCATION_PARAGRAPH}
           </p>
         </div>
@@ -64,7 +66,8 @@ export function RecentNews() {
               <time className="mb-0.5 block font-mono text-xs text-white/60">
                 {item.date}
               </time>
-              <p className="text-sm leading-relaxed text-white">
+              {/* Clamp each news body so varying copy length does not push the RECENT NEWS column taller on Vercel */}
+              <p className="text-sm leading-relaxed text-white clamped-body">
                 {item.body}…
               </p>
             </div>
