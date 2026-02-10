@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Figma design: pure black background, white text */
+  --background: #000000;
+  --foreground: #ffffff;
+  /* Equal margins: centered content max-width + symmetric padding (rem so zoom scales) */
+  --viewport-width: 100vw;
+  --viewport-height: 100dvh;
+  --document-width: 100%;
+  --container-max-width: 90rem;
+  --container-padding-x: 1.25rem;
+  --content-gap: 1.5rem;
+}
+
+/* Stable scrollbar area so right margin doesn’t jump when scrollbar appears */
+html {
+  scrollbar-gutter: stable;
+  /* Scale layout with viewport so resizing shrinks layout instead of reflowing (min 10px keeps text readable) */
+  font-size: min(16px, max(10px, calc(100vw / 90)));
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Centered content block: equal left/right margin at any viewport or zoom */
+.content-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-x);
+  padding-right: var(--container-padding-x);
+  box-sizing: border-box;
+}
